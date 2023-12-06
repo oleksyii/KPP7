@@ -6,4 +6,8 @@ module com.example.kpp7 {
 
     opens com.example.kpp7 to javafx.fxml;
     exports com.example.kpp7;
+    exports com.example.kpp7.Threads;
+    opens com.example.kpp7.Threads to javafx.fxml;
+    exports com.example.kpp7.Models;
+    opens com.example.kpp7.Models to javafx.fxml;
 }
