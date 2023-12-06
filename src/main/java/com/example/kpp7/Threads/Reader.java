@@ -17,7 +17,7 @@ public class Reader implements Runnable {
                 library.checkAndSuspend(id);
 
                 library.borrowBook();
-                Thread.sleep(5000);
+//                Thread.sleep(300);
                 library.returnABook();
             } catch (InterruptedException e){
 //                e.printStackTrace();

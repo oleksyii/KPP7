@@ -1,5 +1,6 @@
 package com.example.kpp7.Threads;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -9,6 +10,7 @@ public class Library {
     HashMap<Integer, Boolean> readers = new HashMap<>();
     private final Lock lock = new ReentrantLock();
     private final Lock lockReading = new ReentrantLock();
+//    private HashMap<Integer, >
 
     public Library(Integer totalBooks) {
         this.totalBooks = totalBooks;
@@ -78,10 +80,11 @@ public class Library {
 
     public synchronized void checkAndSuspend(Integer id) throws InterruptedException {
         while (!readers.get(id)) {
-
             wait();
         }
     }
+
+
 
 
 

@@ -1,15 +1,13 @@
 package com.example.kpp7.Models;
 
-import javafx.beans.Observable;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class Tempclass {
+public class LibraryViewModel {
 
 
 
@@ -21,7 +19,7 @@ public class Tempclass {
 
     SimpleDateFormat sdf;
 
-    public Tempclass(String name, String priority, String state, int id) {
+    public LibraryViewModel(String name, String priority, String state, int id) {
         this.name = new SimpleStringProperty(name);
         this.priority = new SimpleStringProperty(priority);
         this.state = new SimpleStringProperty(state);
@@ -75,8 +73,10 @@ public class Tempclass {
         return timeStamp;
     }
 
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp.set(timeStamp);
+    public void setTimeStamp() {
+
+//        this.timeStamp.set(timeStamp);
+        this.timeStamp = new SimpleStringProperty(sdf.format(new Date()));
     }
 
     public int getId(){
