@@ -1,6 +1,6 @@
 package com.example.kpp7.StatusObserver;
 
-import com.example.kpp7.HelloController;
+import com.example.kpp7.MainViewController;
 import com.example.kpp7.Models.LibraryModel;
 
 import java.util.ArrayList;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class StatusObserver implements Runnable{
 
     LibraryModel libraryModel;
-    HelloController controller;
-    public StatusObserver(LibraryModel lib, HelloController controller){
+    MainViewController controller;
+    public StatusObserver(LibraryModel lib, MainViewController controller){
         libraryModel = lib;
         this.controller = controller;
     }
@@ -23,7 +23,12 @@ public class StatusObserver implements Runnable{
             e.printStackTrace();
         }
         while(true){
+            try{
 
+                Thread.sleep(100);
+            } catch (InterruptedException e){
+                e.printStackTrace();
+            }
 //            tmpThreads = ;
             for (int i = 0; i < libraryModel.getReaders().size(); i++) {
                 controller.UpdateThreadStatus(i, String.valueOf(libraryModel.getReaders().get(i).getState()));

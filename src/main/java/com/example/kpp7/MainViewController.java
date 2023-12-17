@@ -13,7 +13,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class MainViewController implements Initializable {
     ObservableList<LibraryViewModel> list = FXCollections.observableArrayList();
     LibraryModel library;
 

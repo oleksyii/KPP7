@@ -1,6 +1,6 @@
 package com.example.kpp7.Models;
 
-import com.example.kpp7.HelloController;
+import com.example.kpp7.MainViewController;
 import com.example.kpp7.StatusObserver.StatusObserver;
 import com.example.kpp7.Threads.Library;
 import com.example.kpp7.Threads.Reader;
@@ -12,7 +12,7 @@ import java.util.concurrent.*;
 
 public class LibraryModel {
     Library library;
-    HelloController controller;
+    MainViewController controller;
     ArrayList<Thread> readers = new ArrayList<>();
     Thread checker;
     ExecutorService executor;
@@ -47,7 +47,7 @@ public class LibraryModel {
 //        model.killAThread(0);
     }
 
-    public LibraryModel(int numOfBooks, int numOfReaders, HelloController controller){
+    public LibraryModel(int numOfBooks, int numOfReaders, MainViewController controller){
         library = new Library(numOfBooks);
         this.controller = controller;
         // Create an instance of the Random class
@@ -72,20 +72,20 @@ public class LibraryModel {
 
         // Create a ThreadPool using the custom ThreadFactory
 //        ThreadPoolExecutor ex = (ThreadPoolExecutor)Executors.newFixedThreadPool(numOfReaders, threadFactory);
-        executor = Executors.newFixedThreadPool(numOfReaders, threadFactory);
-        futureThreads = new ArrayList<>();
-        // Submit tasks to the ThreadPool
-        ArrayList<Reader> rds = new ArrayList<>();
-        for (int i = 0; i < numOfReaders; i++) {
-            rds.add(new Reader(i, library));
-            getReaders().add(new Thread(rds.get(i)));
-
-            futureThreads.add(executor.submit(rds.get(i)));
-            library.addReader(i, true);
-        }
-
+//        executor = Executors.newFixedThreadPool(numOfReaders, threadFactory);
+//        futureThreads = new ArrayList<>();
+//        // Submit tasks to the ThreadPool
+//        ArrayList<Reader> rds = new ArrayList<>();
+//        for (int i = 0; i < numOfReaders; i++) {
+//            rds.add(new Reader(i, library));
+//            getReaders().add(new Thread(rds.get(i)));
+//
+//            futureThreads.add(executor.submit(rds.get(i)));
+//            library.addReader(i, true);
+//        }
+//
         checker = new Thread(new StatusObserver(this, controller));
-
+//
         checker.start();
 
 
